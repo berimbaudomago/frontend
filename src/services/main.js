@@ -7,10 +7,15 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 export default function Main() {
   return (
+    <>
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm"> 
-        <Box sx={{ bgcolor: '#181818', height: '100vh'}}>
+      <div > 
+        <Box sx={{width:'100%', bgcolor: '#181818', height: '100vh', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', margin: 0,  }}>
+          <Box sx={{
+            color: 'white',
+            display:'hidden'
+          }}>1</Box>
           <Box
             sx={{
             display: 'flex',
@@ -32,8 +37,17 @@ export default function Main() {
               <Button>Argentina</Button>
             </ButtonGroup>
           </Box>
+          <Box sx={{
+            color: 'white',
+            display:'hidden'
+          }}>3</Box>
         </Box>
-      </Container>
+      </div>
     </React.Fragment>
+    <React.Fragment>
+    <CssBaseline />
+    
+  </React.Fragment>
+  </>
   );
 }

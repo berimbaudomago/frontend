@@ -12,14 +12,25 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { contract } from './ethers';
 
-const pages = ['Página Inicial', 'Apostas', 'Detalhes'];
-const settings = ['Perfil', 'Conta', 'Estatísticas', 'Sair'];
+const settings = [contract.address, 'Conta', 'Estatísticas', 'Sair'];
 
 const NavigationBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  
+  const pagesMax = [
+    { name: "Pagina Inicial", link: "/Home" },
+    { name: "Minhas Apostas", link: "/aposta" },
+    { name: "Detalhes", link: "/detalhes" }
+  ];
+  const pagesMin = [
+    { name: "Pagina Inicial", link: "/Home" },
+    { name: "Minhas Apostas", link: "/aposta" },
+    { name: "Detalhes", link: "/detalhes" }
+  ]
+  
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -44,7 +55,7 @@ const NavigationBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/Home.html  "
+            href="#"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -87,19 +98,21 @@ const NavigationBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pagesMin.map(({ link, name }) => (
+                <a href={link}>
+                  <MenuItem key={link} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{name}</Typography>
                 </MenuItem>
+                </a>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="#"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -114,15 +127,13 @@ const NavigationBar = () => {
             Mago
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+              {pagesMax.map(({ link, name }) => (
+                <a href={link}>
+                  <MenuItem key={link} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{name}</Typography>
+                </MenuItem>
+                </a>
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

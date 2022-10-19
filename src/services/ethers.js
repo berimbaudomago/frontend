@@ -8,12 +8,13 @@ const erc20_abi = [
   "function decimals() view returns (uint256)",
 ]
 
-let contract = new ethers.Contract(address, erc20_abi, provider)
+export const contract = new ethers.Contract(address, erc20_abi, provider)
 
+console.log(contract);
 function Ethers(){
     return(
         <div>
-            Ethers Service
+            {/* {contract.address} */}
         </div>
     );
 }
